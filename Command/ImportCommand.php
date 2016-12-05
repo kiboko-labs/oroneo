@@ -41,7 +41,7 @@ class ImportCommand extends OroImportCommand
     {
         $importType = $input->getArgument(self::ARGUMENT_TYPE);
 
-        if (is_null($importType)) {
+        if ($importType === null) {
             return $this->importAll($output, $input->getOption('no-interaction'));
         } else {
             return $this->import($output, $importType, $input->getOption('no-interaction'));

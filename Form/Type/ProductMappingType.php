@@ -3,7 +3,7 @@
 namespace Synolia\Bundle\OroneoBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use OroB2B\Bundle\ProductBundle\Entity\Product;
+use Oro\Bundle\ProductBundle\Entity\Product;
 use Synolia\Bundle\OroneoBundle\Service\OroFieldSelectService;
 
 /**

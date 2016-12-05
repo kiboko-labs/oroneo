@@ -4,7 +4,7 @@ namespace Synolia\Bundle\OroneoBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Synolia\Bundle\OroneoBundle\Service\OroFieldSelectService;
-use OroB2B\Bundle\CatalogBundle\Entity\Category;
+use Oro\Bundle\CatalogBundle\Entity\Category;
 
 /**
  * Class CategoryMappingType

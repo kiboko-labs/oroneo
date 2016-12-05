@@ -3,7 +3,7 @@
 namespace Synolia\Bundle\OroneoBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
-use OroB2B\Bundle\CatalogBundle\Entity\Category;
+use Oro\Bundle\CatalogBundle\Entity\Category;
 
 /**
  * Class CategoryRepository
@@ -31,7 +31,7 @@ class CategoryRepository
     {
         $query = $this->entityManager->createQueryBuilder();
         $query->select('c')
-            ->from('OroB2BCatalogBundle:Category', 'c')
+            ->from('OroCatalogBundle:Category', 'c')
             ->where('c.akeneoCategoryCode = :akeneoCategoryCode')
             ->setParameter('akeneoCategoryCode', $akeneoCategoryCode)
         ;
