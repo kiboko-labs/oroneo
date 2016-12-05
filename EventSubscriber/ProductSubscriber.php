@@ -2,8 +2,7 @@
 
 namespace Synolia\Bundle\OroneoBundle\EventSubscriber;
 
-use Doctrine\ORM\EntityManager;
-use Oro\Bundle\DataAuditBundle\EventListener\EntityListener;
+use Oro\Bundle\DataAuditBundle\EventListener\SendChangedEntitiesToMessageQueueListener;
 use Oro\Bundle\EntityBundle\Event\OroEventManager;
 use Oro\Bundle\EntityBundle\ORM\OroEntityManager;
 use Symfony\Component\Console\ConsoleEvents;
@@ -20,16 +19,16 @@ class ProductSubscriber implements EventSubscriberInterface
     /** @var OroEventManager $manager */
     protected $manager;
 
-    /** @var  EntityListener $listener */
+    /** @var  SendChangedEntitiesToMessageQueueListener $listener */
     protected $listener;
 
     /**
      * CategorySubscriber constructor.
      *
-     * @param OroEntityManager $manager
-     * @param EntityListener   $listener
+     * @param OroEntityManager                            $manager
+     * @param SendChangedEntitiesToMessageQueueListener   $listener
      */
-    public function __construct(OroEntityManager $manager, EntityListener $listener)
+    public function __construct(OroEntityManager $manager, SendChangedEntitiesToMessageQueueListener $listener)
     {
         $this->manager  = $manager->getEventManager();
         $this->listener = $listener;
@@ -57,7 +56,7 @@ class ProductSubscriber implements EventSubscriberInterface
                  * @TODO : fix this :
                  * In @see \Oro\Bundle\DataAuditBundle\Loggable\LoggableManager::getOldEntity
                  * the old values are badly fetched : only the first entry of arrays is recovered,
-                 * making the import fail because it makes @see \OroB2B\Bundle\CatalogBundle\Entity\Category::$titles
+                 * making the import fail because it makes @see \Oro\Bundle\CatalogBundle\Entity\Category::$titles
                  * a LocalizedFallbackValue instead of a collection
                  */
                 $this->manager->removeEventListener(
