@@ -25,7 +25,12 @@ class SynoliaOroneoBundleInstaller implements Installation
      */
     public function up(Schema $schema, QueryBag $queries)
     {
-        $table = $schema->getTable('orob2b_catalog_category');
+        try {
+            $table = $schema->getTable('oro_catalog_category');
+        } catch (SchemaException $e) {
+            $table = $schema->getTable('orob2b_catalog_category');
+        }
+
         $table->addColumn(
             "akeneoCategoryCode",
             "string",
